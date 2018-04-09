@@ -8,7 +8,7 @@ int main(){
 		soma = 0;
 		scanf("%s", n);
 		for(i=0;n[i];i++) {
-			soma = soma + x[n[i] - '0'];1
+			soma = soma + x[n[i] - '0'];
 		}
 		printf("%d leds\n", soma);
 	}
