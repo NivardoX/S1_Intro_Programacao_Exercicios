@@ -6,3 +6,5 @@
 2 - Faca um programa que imprima a soma dos primos entre 0 e 100
 
 3 - Faca um programa que leia um inteiro e apresente os bits do numero lido. Utilize bit-a-bit e o operador - sizeof, para identificar o tamanho do inteiro na sua arquitetura.
+
+4 - questao no uri 1168, leds com vetor
