@@ -1,0 +1,16 @@
+Assunto : Funcoes
+
+----Questoes----
+1- Crie um programa que calcule o resultado da seguinte expressao:
+  e = 2 + 1/1+2! + 2/2+3! + 3/3+4! + ... + n/n+(n+1)! 
+
+2- Crie um programa que calcule os 10 primeiros numeros da serie de fibonacci.
+  fib(n) =  {1, se n <= 2
+            {fib(n-1) + fib(n-2), se n > 2
+    ex = 1 1 3 5 8 13...
+   
+3- Faca um programa que calcule a soma dos 1000 primeiros numeros primos.
+
+4- Faca um programa que rouba dois inteiros e calcule o mdc entre eles.
+
+5
