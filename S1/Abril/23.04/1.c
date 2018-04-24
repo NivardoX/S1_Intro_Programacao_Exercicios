@@ -34,11 +34,10 @@ long double fat(long double x){
 long double calc(long double x){
 
 	long double e = 2;
-	long double i,f;
+	long double i;
 	
 	for(i = 1; i <= x;i++){
-		f = fat(i+1);
-		e += i/(i+f);
+		e += i/(i+fat(i+1));
 	}
 
 	return e;
