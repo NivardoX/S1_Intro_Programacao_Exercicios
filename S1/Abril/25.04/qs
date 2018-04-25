@@ -3,4 +3,6 @@ Assunto : Recursividade
 ----qs-----
 1 - Fibonacci iterativo
 2 - Fibonacci recursiva
-3 - Recursao de cauda
+3 - Recursao de cauda(soma de valores em vetor)
+4 - Criar um algoritmo recursivo para inverter uma string
+5 - Criar um algoritmo recursivo para verificar se uma string é palindromo
