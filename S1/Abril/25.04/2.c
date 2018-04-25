@@ -21,7 +21,6 @@ int main(){
 
 
 long int fib(int x){
-	long int a,b,f,i;
 	
 	if(x <= 2){
 		return 1;	
@@ -30,5 +29,5 @@ long int fib(int x){
 	}
 
 
-	return f;
+	return x;
 }
