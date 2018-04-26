@@ -4,7 +4,6 @@ int sum(int vt[10], int i, int f, int soma);
 
 int vt[10] = {1,2,3,4,5,6,7,8,9,10};
 int i;
-int soma;
 
 int main(){
 
