@@ -1,6 +1,7 @@
 Assunto : Programação dinamica
 
 --------qs--------
-1 - Dado um conjunto de inteiros nao negativos, determine se existe um subconjunto cuja soma é igual a um certo vetor v.
+1 - Fibonacci dinamico
+2 - Dado um conjunto de inteiros nao negativos, determine se existe um subconjunto cuja soma é igual a um certo vetor v.
   ex : {3,34,4,12,5,2} v = 9
     output: True {4,5}
