@@ -53,10 +53,34 @@ Assunto : Ponteiros
         p2 = p1;
         printf("%p %p %d", p1,p2,p1==p2);
         
+----------------------------------------------------------------------------------------------------------------        
+*Ponteiros e Matrizes
+  -Há uma estreita relacao entre ponteiros e matrizes.
  
-END.
+ Ex :   char str[10], *p;
+        p = str;
+        
+        printf("%d", str[4], *(p+4));
+        
+        
+------------------------------------------------  
+*Acessando elementos de matrizes com ponteiros
+  I.: Indexaçao de matrizes
+      for(i = 0; i < 10; i++)
+        printf("%c", p[i])
+        
+  II.:  Aritmetica de ponteiros
+        char str[100] = "Ponteiros";
+        char *p = str;
+        
+        while(*p)
+          printf("%c", *p++);
 
 ------------------------------------------------  
+*
+
+                                                  END.
+----------------------------------------------------------------------------------------------------------------    
 
 ----qs-----
 
