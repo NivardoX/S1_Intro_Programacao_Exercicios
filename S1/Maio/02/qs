@@ -4,10 +4,12 @@ Assunto : Ponteiros
   -É uma variavel que contem um endereco de memoria
   -O conteudo dessa variavel é a posicao de outra variavel na memoria
   -Um ponteiro aponta para outra variavel quando contem o endereco desta
-  
+
+------------------------------------------------  
 *Declaracao : TIPO *IDENTIFICADOR;
 *Inicializacao : IDENTIFICADOR = NULL;
  
+------------------------------------------------  
 *Operacoes de ponteiros
   -Operador '&' : Devolve o endereco de memoria de seu operando
   
@@ -15,12 +17,11 @@ Assunto : Ponteiros
         int x = 10;
         p = &x;
         
-        
   -Operador '*' : Devolve o conteudo armazenado em um endereco. Ou seja, o conteudo da variavel que o ponteiro aponta.
   
   Ex :  printf("x = %d", *p);
   
-  
+------------------------------------------------  
 *Atribuicao de ponteiros
   - A atribuicao funciona da mesma forma de qualquer variavel.
   
@@ -29,8 +30,8 @@ Assunto : Ponteiros
         p1 = &x;
         p2 = p1;
         printf("%p", p2);
-        
-        
+       
+------------------------------------------------        
 *Aritmetica dos ponteiros
   -Existem duas operacoes aritmeticas de ponteiros : adicao e subtracao.
   
@@ -40,7 +41,7 @@ Assunto : Ponteiros
         p++;
         printf("%p", p);
         
-        
+------------------------------------------------  
 *Comparacao de ponteiros  
   -Servem para verificar se ponteiros apontam para a mesma regiao de memoria;
   
@@ -52,6 +53,8 @@ Assunto : Ponteiros
         
  
 END.
+
+------------------------------------------------  
 
 ----qs-----
 
