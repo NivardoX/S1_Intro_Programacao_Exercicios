@@ -77,7 +77,16 @@ Assunto : Ponteiros
           printf("%c", *p++);
 
 ------------------------------------------------  
-*
+*Matrizes de ponteiros
+  -Cada posicao da matriz contem um endereco que deve apontar para uma variavel.
+  
+   I.: Declaracao : TIPO *IDENTIFICADOR[TAMANHO];
+   
+   Ex : int *notas[10];
+        notas[2] = &var;
+        
+        printf("%d", notas[2]);
+
 
                                                   END.
 ----------------------------------------------------------------------------------------------------------------    
@@ -85,3 +94,4 @@ Assunto : Ponteiros
 ----qs-----
 
 1 - Crie um programa que apresente a soma de dois inteiros lidos. As variaveis devem ser passadas atraves de ponteiros.
+2 - Crie um programa que apresente os dados de uma matriz bidimensional utilizando somente um 'for'.
