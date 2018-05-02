@@ -34,6 +34,8 @@ Assunto : Ponteiros
 ------------------------------------------------        
 *Aritmetica dos ponteiros
   -Existem duas operacoes aritmeticas de ponteiros : adicao e subtracao.
+        OBS : O valor a ser adicionado ou subtraido depende estritamente do tipo de dado do ponteiro.
+              No tipo int é adicionado 2, em 'p++', pois tipo int é constituido de 2 bits.
   
   Ex :  int x;
         int *p;
