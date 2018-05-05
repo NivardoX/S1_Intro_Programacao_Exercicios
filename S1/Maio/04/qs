@@ -1,1 +1,62 @@
+Assunto : ______________
 
+
+*Indirecao multipla
+  I .: Definicao : 
+    - É a situacao em que um ponteiro aponta para um outro ponteiro. tambem conhecido como ponteiro de ponteiros.
+  II.: Declaracao : 
+    TIPO **IDENTIFICADOR;
+
+    Ex :  int x, *p, **q;
+          x = 10;
+          p = &x;
+          q = &p;
+          printf("%d", **q);
+          
+-----------------------------------------------------------------
+*Alocacao dinamica
+  I .: Definicao : 
+    - É o meio pelo qual a memoria é alocada em tempo de execucao.
+    
+  II .: Funcoes de alocacao dinamica : 
+    • malloc : aloca espaco de memoria
+          * :   void *malloc(size_t numero_bytes);
+
+          Exs :   char *p;
+                  p = malloc(100);
+
+              :   int *p;
+                  p = malloc(10*sizeof(int));
+
+      OBS : Problem
+            - Limitacao 
+              *Solucao :  int *p;
+                          p = malloc(50*sizeof(int));
+                          if(p == NULL){
+                            printf("erro-sem memoria");
+                            exit(1);
+                          }
+                      
+  • free : libera a memoria alocada
+        * : free(p);
+        OBS : Sempre que a memoria for alocada dinamicamente, ela deve ser liberada
+        
+        Ex :  char *s, int i;
+              s = malloc(80*sizeof(char));
+              gets(s);
+              i = 0;
+              while(*(s+1)){
+                printf("%c", *(s+1));
+                i = i+1;
+              }
+              free(s);
+              
+              
+              
+
+----------------------------------------------------------------------------------------------------------------------------------
+
+-----qs-----
+-
+-
+-
