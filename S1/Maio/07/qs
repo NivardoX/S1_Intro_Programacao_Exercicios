@@ -1,0 +1,8 @@
+Assunto :
+
+-----qs------
+1 - Faca um programa que leia um numero N que representa o numero de alunos em uma turma. De posse disso, deverao ser lidos N
+    notas e o N nomes de alunos. Estas informacoes devem ser armazenadas em um vetor dinamicamente alocado. As N notas devem ser
+    armazenadas em um vetor do tipo float e os nomes devem ser refornecidos por um vetor de ponteiros de char.
+    
+2 - As notas e os alunos lidos na questao anterior, devem ser impressos em ordem alfabetica por nome dos alunos.
