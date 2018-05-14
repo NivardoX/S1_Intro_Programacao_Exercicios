@@ -1,0 +1,59 @@
+Assunto: Ponteiros e funcoes
+
+--------------------------------------------------------------------
+
+  - Funcoes podem receber como argumentos ou retornar ponteiros para espacoes de memoria.
+  
+  Ex:   main
+          a = 2 // posicao 2000
+          b = 7 // posicao 2010
+          
+          }
+          
+        funcao soma
+          *x = 2000      
+          *y = 2010
+          
+          }
+          
+---------------------------------------------------------------------------------------------
+
+  - Enviando ponteiros como parametros de funcoes:
+    • Sintaxe:  int soma(int *x, int *y) {...}
+    
+      - x e y dentro da funcao sao ponteiros.
+      - Os valores propriamente ditossao acessados por *x ou *y
+      
+------------------------------------------------------------------------------------------------------
+
+  - Retornando ponteiros com funcao:
+    • Sintaxe: char *alocaString(int n){
+                
+                  return malloc(n*sizeof(char))
+                }
+                
+---------------------------------------------------------------------------------------------------------
+
+  - A funcao main:
+    • A funcao main recebe dois argumentos da linha de comando
+      
+      int main(int argc, char**argv){
+        int i;
+        for(i = 0; i < argc;i++){
+          printf("%s", argv[i]);
+        }
+        return 0;
+      }
+      
+OBS : Os argumentos sao recebidos como strings. Podemos converter pelas funcoes atoi(), atof(), etc
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+-------------qs----------------
+
+1 - Faca um programa que calculo o mdc de dois numeros inteiros. A funcao utilizada deve ser recursiva e utilizar
+    passagem por referencia.
+      Crie uma versao do metodo com passagem por valor e compare os tempos.
+      
+
