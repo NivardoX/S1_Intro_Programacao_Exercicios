@@ -1,26 +1,36 @@
 #include <stdio.h>
-#include <stdlib.h>
 
-int mdcRecursao(long long int *a,long long int *b){
-	if(*a == *b){
-		return *a;
-	}else if(*a > *b){
-		*a = *a - *b;
-		mdcRecursao(a,b);		
-	}else{
-		*b = *b -*a;	
-		mdcRecursao(a,b);	
+int mdc(int *a,int *b);
+
+int main(){
+
+	int a, b;
+
+	while(1){	
+
+		printf("Digite os valores >> ");
+
+		scanf("%d %d", &a,&b);
+		
+		printf("\n%d %d\n", a,b);
+
+		printf("o mdc eh : %d\n",mdc(&a,&b) );
+
 	}
-}
 
-int main(int argc, char **argv){
-	long long int i,j;
-	i = atoi(argv[1]);
-	j = atoi(argv[2]);
-	
-	printf("%d\n",mdcRecursao(&i,&j));
-	
 	return 0;
 }
-	
-	
+
+
+int mdc(int *a, int *b){
+
+	if(*a == *b)
+		return *a;
+	else if(*a > *b){
+		*a = *a - *b;
+		return mdc(a,b);
+	}else{
+		*b = *b - *a;
+		return mdc(a,b);
+	}
+}
