@@ -30,7 +30,7 @@ Assunto : Manipulacao de arquivos
         
     EX : FILE *fp
          fp = fopen("list.txt","w");
-         if(fp == null){
+         if(fp == NULL){
             printf("O arquivo nao pode ser aberto\n");
             exit(1);
          }
