@@ -53,6 +53,20 @@ Assunto : Manipulacao de arquivos
        
        A funcao getc tambem retorna EOF quanto a leitura gera algum erro.
        
+       
+  *****Funcao fcof:
+         Verifica se o ponteiro de arquivo esta apontando para o final do arquivo.
+         
+         EX : while(!fcof(fp))
+                ch = getc(fp);
+                
+----------------------------------------------------------------------------------
+
+  - Trabalhando com strings : 
+    
+      int fputs(char*str, FILE *fp);
+      char*fgets(char*str, int length, FILE *fp);
+       
                                                       EOF
 --------------------------------------------------------------------------------------------------------------------------
 
