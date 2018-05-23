@@ -1,11 +1,13 @@
 Assunto : Manipulacao de arquivos
 
 ------------------------------------------------------------------------------------------------------------------------------
+
   - Ponteiros de arquivos:
       A linguagem C possui um tipo de dado 'FILE' que permite a manipulacao de arquivos.
       *Declaracao
         FILE *fp;
         
+----------------------------------------
   - Abertura de arquivos: 
       A abertura de um arquivo é feita atraves da funcao fopen. Ela associa uma str?? de arquivo a ponteiro.
   
@@ -24,6 +26,36 @@ Assunto : Manipulacao de arquivos
         a+ : anexa ou cria um arquivo-texto para leitura/escrita
         rb+ : abre arquivo binario para leitura/escrita
         wb+ : cria um arquivo binario para leitura/escrita
-        a+b : anexa um arquivo binario para leitura/escrita
+        a+b ou ab+ : anexa um arquivo binario para leitura/escrita
         
-        
+    EX : FILE *fp
+         fp = fopen("list.txt","w");
+         if(fp == null){
+            printf("O arquivo nao pode ser aberto\n");
+            exit(1);
+         }
+         
+  **Fechando um arquivo :
+      Sempre que um arquivo é aberto, apos as operacoes de leitura/escrita, ele deve ser liberado
+   para que outros programas o acessem.
+   
+      fclose(fp);
+      
+  ***Escrevendo m caractere:
+       Um caractere pode ser escrito em um arquivo atraves da funcao 'putc';
+   
+       putc(char ch, FILE *fp);
+
+  ****Lendo um caractere:
+       A leitura de elementos do arquivo é feita atraves da funcao getc. Ela retorna EOF quanto o arquivo chega ao fim.
+       
+       char getc(FILE *fp);
+       
+       A funcao getc tambem retorna EOF quanto a leitura gera algum erro.
+       
+                                                      EOF
+--------------------------------------------------------------------------------------------------------------------------
+
+--------qs---------
+1 - Crie um programa que leia 1000 caracteres do teclado e escreva em um arquivo.
+2 - Crie um outro programa que leia o arquivo criado na questao anterior e mostre na tela.
