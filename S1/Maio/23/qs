@@ -1,2 +1,29 @@
 Assunto : Manipulacao de arquivos
 
+------------------------------------------------------------------------------------------------------------------------------
+  - Ponteiros de arquivos:
+      A linguagem C possui um tipo de dado 'FILE' que permite a manipulacao de arquivos.
+      *Declaracao
+        FILE *fp;
+        
+  - Abertura de arquivos: 
+      A abertura de um arquivo é feita atraves da funcao fopen. Ela associa uma str?? de arquivo a ponteiro.
+  
+      FILE * fopen(char*nome, char* modo);
+      
+  *Modos de abertura: 
+
+        r : abre para leitura
+        w : cria um arquivo para escrita
+        a : anexa um arquivo de texto
+        rb : abre um arquivo binario para leitura
+        wb : cria um arquivo binario para escrita
+        ab : anexa um arquivo binario
+        r+ : abre um arquivo-texto para leitura/escrita
+        w+ : cria um arquivo-texto para leitura/escrita
+        a+ : anexa ou cria um arquivo-texto para leitura/escrita
+        rb+ : abre arquivo binario para leitura/escrita
+        wb+ : cria um arquivo binario para leitura/escrita
+        a+b : anexa um arquivo binario para leitura/escrita
+        
+        
