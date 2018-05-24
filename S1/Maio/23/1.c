@@ -16,6 +16,7 @@ int main() {
 
 	if (fp == NULL) {
 		printf("Nao foi possivel criar o arquivo\n");
+		exit(1);
 	}
 	fclose(fp);
 
