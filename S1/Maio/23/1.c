@@ -1,15 +1,23 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main(){
+int main() {
 
 	FILE *fp;
-	
-	fp = fopen("testPonteiros.txt", "w");
+	char ch;
 
-	if(fp == NULL){
-		printf("o arquivo nao pode ser criado\n");
-		exit(1);
+	fp = fopen("test.txt", "w");
+
+	int i = 1000;
+	while (i--) {
+		scanf("%c", ch);
+		putc(ch, fp);
 	}
+
+	if (fp == NULL) {
+		printf("Nao foi possivel criar o arquivo\n");
+	}
+	fclose(fp);
 
 	return 0;
 }
