@@ -7,10 +7,10 @@ int main() {
 	char ch;
 
 	fp = fopen("test.txt", "w");
-
+	
 	int i = 1000;
 	while (i--) {
-		scanf("%c", ch);
+		scanf("%c", &ch);
 		putc(ch, fp);
 	}
 
