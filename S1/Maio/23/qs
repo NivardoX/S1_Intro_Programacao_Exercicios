@@ -82,3 +82,6 @@ Assunto : Manipulacao de arquivos
 --------qs---------
 1 - Crie um programa que leia 1000 caracteres do teclado e escreva em um arquivo.
 2 - Crie um outro programa que leia o arquivo criado na questao anterior e mostre na tela.
+
+--------qs2--------
+1 - Crie um programa que crie uma tela de cadastro com alocacao dinamica e guarde os dados em um arquivo .txt.
