@@ -1,10 +1,10 @@
-Apagando arquivos.
+#Apagando arquivos.
 
   - Funcao que remove o arquivo caso ele nao esteja sendo usado.
   - Retorno Ø se a exclusao foi bem sucedida e != Ø caso contrario.
     Ex :
         int main( int argc, char**argv){
-          if(remove(arv[i])){
+          if(remove(argv[i])){
             printf("arquivo nao pode ser removido\n");
             }
           return 0;
