@@ -1,0 +1,49 @@
+  *// Apagando arquivos.
+
+    - Funcao que remove o arquivo caso ele nao esteja sendo usado.
+    - Retorno Ø se a exclusao foi bem sucedida e != Ø caso contrario.
+      Ex :
+          int main( int argc, char**argv){
+            if(remove(arv[i])){
+              printf("arquivo nao pode ser removido\n");
+              }
+            return 0;
+          }
+          
+  *// 'fread' e 'fwrite' : 
+    - Sao funcoes que leem e escrevem dados em arquivos binarios.
+     
+     
+    * size_t fread(void *buffer, size_t num_bytes, size_t count, FILE *fp); 
+      - buffer:
+        * É um ponteiro para a regiao de memoria em que os dados lidos serao armazenados.
+      - num_bytes :
+        * Tamanho dos itens lidos em bytes.
+      - count :
+        * Quantidade de itens que serao lidos.
+      - fp :
+        * Ponteiro para arquivo binario aberto.
+    * size_t fwrite(void *buffer, size_t num_bytes, size_t count, FILE *fp);
+      - buffer : 
+        * Vetor com dados que serao escritos no arquivo.
+
+      *OBS : * A funcao 'fread' retorna o numero de itens lidos. Esse numero pode ser menor que o parametro 'count'.
+            * A funcao 'fwrite' retorna o numero de itens escritos no arquivo. Sera diferente de 'count' se ocerrer um erro.
+
+    Ex :  
+        int buff[5] = {2,3,7,9,1};
+        FILE *fp = fopen("arg.bin", "wb+");
+
+        if(fp == null)
+          exit(1);
+
+        fwrite(buff, sizeof(int), 5, fp);
+        rewind(fp);
+        fread(out, sizeof(int), 5, fp);
+
+        for(i = 0; i < 5; i++){
+          printf("%d", out[i]);
+        }
+        
+        
+        
