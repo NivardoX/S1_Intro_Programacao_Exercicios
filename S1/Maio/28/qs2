@@ -31,6 +31,7 @@
             * A funcao 'fwrite' retorna o numero de itens escritos no arquivo. Sera diferente de 'count' se ocerrer um erro.
 
     Ex :  
+        int out[5];
         int buff[5] = {2,3,7,9,1};
         FILE *fp = fopen("arg.bin", "wb+");
 
