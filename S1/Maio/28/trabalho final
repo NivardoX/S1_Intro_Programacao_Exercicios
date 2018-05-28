@@ -10,3 +10,8 @@ Trabalho Final
       - Um arquivo JPG colorido.
   4 - Saida do programa : 
       - Os dois arquivos JPG solicitados.
+      
+      
+      
+------------------------INFORMAÇÕES ÚTEIS-------------------------------
+      Conversão pra grayscale 0.299 * R + 0.587 * G + 0.114 * B
