@@ -1,1 +1,12 @@
-
+Trabalho Final
+  Entrega = 15/06/2018
+  Equipes : 3 pessoas
+  
+  1 - Estudar o formato de arquivo JPG.
+  2 - Criar um programa em C ANSI que abra o arquivo JPG(conisdere arquivo de imagem colorida) e realize as seguintes operacoes:
+      - Zerar a matriz R(red) da imagem e salvar um arquivo .jpg com o resultado.
+      - Converter a imagem p/ tons de cinza e salvar um arquivo .jpg com o resultado.
+  3 - Entrada do programa: 
+      - Um arquivo JPG colorido.
+  4 - Saida do programa : 
+      - Os dois arquivos JPG solicitados.
