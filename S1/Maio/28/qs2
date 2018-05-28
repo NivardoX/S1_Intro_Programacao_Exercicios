@@ -48,3 +48,15 @@
         
         
         
+ *// Funcao 'fseek':
+     - posiciona o ponteiro do arquivo em um local especifico.
+     
+     int fseek(FILE *fp, long num_bytes, int origin);
+     
+     - num_bytes: quantidade de bytes a partir da "origin" do arquivo.
+     - origin: Macros definidas na 'stdio.h'
+       * SEEK_SET: Inicio do arquivo.
+       * SEEK_CUR: Posicao atual do arquivo.
+       * SEEK_END: Fim do arquivo.
+    *OBS: Retorna 0 se for bem sucedida e diferentes de zero caso contrario.
+    
