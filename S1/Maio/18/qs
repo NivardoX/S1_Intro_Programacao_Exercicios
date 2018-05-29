@@ -12,6 +12,6 @@
       E - Sair
       
       Para armazenar as informacoes dos usuarios, utilize alguma estrutura que nao tenha alocacao de espaco para usuarios nao 
-    cadastrados. Ou seja, nao ha desperdicio de memoria. Sempre que um usuario for cadastrado, o espaco de memoria necessario 
-    deve ser alocado e ao escluir, o espaco deve ser desalocado.
-      O programa deve executar enquanto o usuario nao pedir para sair.
+cadastrados. Ou seja, nao ha desperdicio de memoria. Sempre que um usuario for cadastrado, o espaco de memoria necessario 
+deve ser alocado e ao excluir, o espaco deve ser desalocado.
+O programa deve executar enquanto o usuario nao pedir para sair.
