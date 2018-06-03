@@ -23,3 +23,5 @@ int main(){
 	}
 
 }
+
+//fazer leitura com tipo int, pois ao encontrar o valor inteiro referente a '#', a linha eh pulada
