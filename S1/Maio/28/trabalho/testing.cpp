@@ -160,7 +160,7 @@ unsigned char** lerImagem(unsigned char **M, int x, int y){
 		for(j = 1; j < y; j++){
 
 			fscanf(pgm, "%hhu ", &temp);
-			if(temp == '#' || temp == '\n'){
+			if(temp == "#" || temp == '\n'){
 			//if(temp == '#'){
 				fgets(lixo, ABSURDOMEUDEUS, pgm);
 				j--;
