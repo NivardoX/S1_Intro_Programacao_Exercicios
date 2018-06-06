@@ -158,18 +158,13 @@ unsigned char** lerImagem(unsigned char **M, int x, int y){
 	for(i = 1; i < x; i++){
 		for(j = 1; j < y; j++){
 
-<<<<<<< HEAD
-			fscanf(pgm, "%hhu", &temp);
-			if(temp == '#'){
-=======
 			fscanf(pgm, "%hhu ", &temp);
-			if(temp == "#" || temp == '\n'){
->>>>>>> 841781091fb25644266967a80fbbc2fc2bafd1f4
-			//if(temp == '#'){
+			if(temp == '#' || temp == '\n'){
+			if(temp == '#'){
 				fgets(lixo, ABSURDOMEUDEUS, pgm);
 				j--;
-			}else if(temp == ' '|| temp == '\n'){
-						j--;
+			}if(temp == ' '){
+				j--;
 			}else{
 				M[i][j] = temp;	
 			}		
@@ -199,14 +194,11 @@ void criarArquivoBorda(unsigned char **M, int x, int y, int scale){
 	fprintf(newPgm,"%d %d\n", y, x);
 	fprintf(newPgm,"%d\n", scale);
 
-	printf("X = %d e Y = %d na funcao de escrever\n",x,y );
 	for(i = 0; i < x ; i++){
 		for(j = 0; j < y ; j++){
-			if(j%12 == 0)
-				fprintf(newPgm,"\n");
-			fprintf(newPgm,"%.3hhu ", M[i][j]);
+			fprintf(newPgm,"%d ", M[i][j]);
 		}
-		
+		fprintf(newPgm,"\n");
 	}
 	fclose(newPgm);
 	cout << "arquivo criado com sucesso\n";

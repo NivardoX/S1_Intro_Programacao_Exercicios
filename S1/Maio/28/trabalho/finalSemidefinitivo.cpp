@@ -14,7 +14,7 @@ unsigned char** lerImagem(unsigned char **M,int x,int y);
 void bordear(unsigned char **M,int x,int y);
 unsigned char pos(unsigned char **M,int x,int y);
 void criarArquivoBorda(unsigned char **M, int x, int y, int scale);
-
+unsigned char** suave(unsigned char **M, int x, int y);
 
 int main(int argc, char *argv[]){
 
@@ -45,12 +45,22 @@ int main(int argc, char *argv[]){
 	x = -1;
 	scale = -1;
 	while(scale <= 0 ){
-		printf("loop do while\n");	
-		fscanf(pgm, "%c",&c);
-		if(c == '#'){
-			fgets(lixo,ABSURDOMEUDEUS,pgm);
-			printf("printf # encontrado\n");
-		}else if(c != '#'){
+		printf("loop do while\n");
+	    
+	    char k;
+		k = fgetc(pgm);
+        
+        if( k == '#'){
+            j--;
+            fgets(lixo,ABSURDOMEUDEUS,pgm);
+            continue;	
+        }     
+        
+        fseek(pgm,-1,SEEK_CUR);
+		
+        fscanf(pgm, "%c",&c);
+        
+		
 			if(y == -1){
 				fseek(pgm,-1,SEEK_CUR);
 				fscanf(pgm, "%d", &y);
@@ -63,7 +73,7 @@ int main(int argc, char *argv[]){
 				fseek(pgm,-1,SEEK_CUR);
 				fscanf(pgm, "%d", &scale);
 				printf("x definido\n");
-			}
+			
 		}	
 	}
 
@@ -74,7 +84,9 @@ int main(int argc, char *argv[]){
 	M = criarMatriz(x+2, y+2);
 	bordear(M,x,y);			
 	lerImagem(M,x+1,y+1);
-	criarArquivoBorda(M,x+2,y+2, scale);
+    M = suave(M,x,y);
+	criarArquivoBorda(M,x,y, scale);
+   
 
 	///////////////////////////////////////////////////////////////////////////////////
 	//teste matriz
@@ -131,15 +143,15 @@ void bordear(unsigned char **M, int x, int y){
 	cout << "borda ini\n";
 
 	for(i = 0; i <= y+1;i++){
-		M[0][i] = 255;
-		M[x+1][i] = 255;
+		M[0][i] = 0;
+		M[x+1][i] = 0;
 	}
 
 	cout << "borda meio\n";
 
 	for(i = 0; i <= x+1;i++){
-		M[i][0] = 255;
-		M[i][y+1] = 255;
+		M[i][0] = 0;
+		M[i][y+1] = 0;
 	}
 	
 	cout << " borda fim\n";
@@ -152,27 +164,24 @@ unsigned char** lerImagem(unsigned char **M, int x, int y){
 	int i,j;
 	char lixo[1000];
 	unsigned char temp;
+    
+    //int temp = ABSURDOMEUDEUS;
 
 	cout << "lendo imagem\n";
 	
 	for(i = 1; i < x; i++){
 		for(j = 1; j < y; j++){
-
-<<<<<<< HEAD
-			fscanf(pgm, "%hhu", &temp);
-			if(temp == '#'){
-=======
-			fscanf(pgm, "%hhu ", &temp);
-			if(temp == "#" || temp == '\n'){
->>>>>>> 841781091fb25644266967a80fbbc2fc2bafd1f4
-			//if(temp == '#'){
-				fgets(lixo, ABSURDOMEUDEUS, pgm);
-				j--;
-			}else if(temp == ' '|| temp == '\n'){
-						j--;
-			}else{
-				M[i][j] = temp;	
-			}		
+	        char k;
+	        
+	        k = fgetc(pgm);
+	        if( k == '#'){
+	            j--;
+	            fgets(lixo,ABSURDOMEUDEUS,pgm);
+	            continue;	
+            }
+            fseek(pgm,-1,SEEK_CUR);
+		    fscanf(pgm, "%hhu ", &temp);
+			M[i][j] = temp;	
 		}
 	}
 	
@@ -199,15 +208,23 @@ void criarArquivoBorda(unsigned char **M, int x, int y, int scale){
 	fprintf(newPgm,"%d %d\n", y, x);
 	fprintf(newPgm,"%d\n", scale);
 
-	printf("X = %d e Y = %d na funcao de escrever\n",x,y );
-	for(i = 0; i < x ; i++){
-		for(j = 0; j < y ; j++){
-			if(j%12 == 0)
-				fprintf(newPgm,"\n");
-			fprintf(newPgm,"%.3hhu ", M[i][j]);
+	for(i = 1; i < x+1 ; i++){
+		for(j = 1; j < y+1 ; j++){
+			fprintf(newPgm,"%d ", M[i][j]);
 		}
-		
+		fprintf(newPgm,"\n");
 	}
 	fclose(newPgm);
 	cout << "arquivo criado com sucesso\n";
+}
+unsigned char** suave(unsigned char **M, int x, int y){
+
+    int i,j;
+    for(i = 1; i < y; i++){
+        for(j = 1; j < x; j++){
+            M[i][j] = ((M[i-1][j-1]+M[i-1][j]+M[i-1][j+1]+M[i][j-1]+M[i][j]+M[i][j+1]+M[i+1][j-1]+M[i+1][j]+M[i+1][j+1])/9);
+        }
+    }
+    
+    return M;
 }
