@@ -73,7 +73,7 @@ int main(int argc, char *argv[]){
 
 	M = criarMatriz(x+2, y+2);
 	bordear(M,x,y);			
-	lerImagem(M,x,y);
+	lerImagem(M,x+1,y+1);
 	criarArquivoBorda(M,x+2,y+2, scale);
 
 	///////////////////////////////////////////////////////////////////////////////////
@@ -98,7 +98,6 @@ int main(int argc, char *argv[]){
 	//
 	//
 	////////////////////////////////////////////////////////////////////////////////////
-
 */
 	fclose(pgm);
 
@@ -131,7 +130,7 @@ void bordear(unsigned char **M, int x, int y){
 
 	cout << "borda ini\n";
 
-	for(i = 0; i <= x+1;i++){
+	for(i = 0; i <= y+1;i++){
 		M[0][i] = 255;
 		M[x+1][i] = 255;
 	}
@@ -159,13 +158,13 @@ unsigned char** lerImagem(unsigned char **M, int x, int y){
 	for(i = 1; i < x; i++){
 		for(j = 1; j < y; j++){
 
-			fscanf(pgm, "%hhu ", &temp);
-			if(temp == '#' || temp == '\n'){
+			fscanf(pgm, "%hhu", &temp);
+			if(temp == '#'){
 			//if(temp == '#'){
 				fgets(lixo, ABSURDOMEUDEUS, pgm);
 				j--;
-			}else if(temp == ' '){
-				j--;
+			}else if(temp == ' '|| temp == '\n'){
+						j--;
 			}else{
 				M[i][j] = temp;	
 			}		
@@ -195,15 +194,15 @@ void criarArquivoBorda(unsigned char **M, int x, int y, int scale){
 	fprintf(newPgm,"%d %d\n", y, x);
 	fprintf(newPgm,"%d\n", scale);
 
+	printf("X = %d e Y = %d na funcao de escrever\n",x,y );
 	for(i = 0; i < x ; i++){
 		for(j = 0; j < y ; j++){
-			fprintf(newPgm,"%d\t", M[i][j]);
+			if(j%12 == 0)
+				fprintf(newPgm,"\n");
+			fprintf(newPgm,"%.3hhu ", M[i][j]);
 		}
-		fprintf(newPgm,"\n");
+		
 	}
 	fclose(newPgm);
 	cout << "arquivo criado com sucesso\n";
 }
-
-
-
