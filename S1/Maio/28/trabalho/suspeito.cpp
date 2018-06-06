@@ -1,6 +1,8 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
+#include <string.h>
 #define ABSURDOMEUDEUS 1000000
 
 	
@@ -18,6 +20,8 @@ unsigned char** lerImagem(unsigned char **M,int x,int y);
 void criarArquivoBorda(unsigned char **M, int x, int y, int scale);
 unsigned char** filtro(unsigned char **original, int x, int y, int jan);
 int Bordar(int i, int j, short int laplace[][3], unsigned char **pgm);
+void free(unsigned char **M, int x);
+
 
 
 int main(){
@@ -240,4 +244,13 @@ int Bordar(int i, int j, short int laplace[][3], unsigned char **pgm){
         i++;
     }
     return element;
+}
+
+void free(unsigned char **M, int x){
+	int i;
+	for (i = 0; i < x; ++i){
+		free(M[i]);
+	}
+
+	free(M);
 }
