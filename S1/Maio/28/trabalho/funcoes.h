@@ -67,9 +67,14 @@ void criarArquivoBorda(unsigned char **M, int x, int y, int scale,char *nome){
 	fprintf(newPgm,"%d %d\n", y, x);
 	fprintf(newPgm,"%d\n", scale);
 
+	int count = 1;
 	for(i = janela/2; i < x+janela/2 ; i++){
-		for(j = janela/2; j < y+janela/2 ; j++){
-			fprintf(newPgm,"%d ", M[i][j]);
+		count = 1;
+		for(j = janela/2; j < y+janela/2 ; j++,count++){
+			
+			fprintf(newPgm,"%.3d ", M[i][j]);
+			if(count%10==0 && j > janela/2)
+				fprintf(newPgm, " #Linha %d.\n", i - janela/2 +1);
 		}
 		fprintf(newPgm,"\n");
 	}
