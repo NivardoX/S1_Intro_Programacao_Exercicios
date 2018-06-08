@@ -1,180 +1,86 @@
-#define ABSURDOMEUDEUS 1000000
+#include <stdio.h>
+#include <stdlib.h>
+#include <iostream>
+#include <string.h>
+#include "funcoes.h"
+#include "codigoYves.h"
+
 
 using namespace std;
 
-FILE *pgm;
-FILE *newPgm;
-int janela;
-short int laplace[3][3] = {{0, -1, 0},
-                              {-1, 4, -1},
-                              {0, -1, 0}};
-
-unsigned char** criarMatriz(int x, int y){
-	unsigned char **temp;
-
-	temp = (unsigned char**)malloc(x* sizeof(char*));
-	
-	int i;
-
-	for(i = 0; i < x; i++){
-		temp[i] = (unsigned char*)malloc(y*sizeof(char));
-	}
-
-	return temp;
-}
-
-
-
-unsigned char** lerImagem(unsigned char **M, int x, int y){
+int main(){
 
 	int i,j;
-	char lixo[1000];
-	unsigned char temp;
+	int x,y;
+	
+	unsigned char **M;
 
-	for(i = janela/2; i < x + janela/2 - 1; i++){
-		for(j = janela/2; j < y + janela/2 - 1; j++){
-	        char k;
-	        
-	        k = fgetc(pgm);
-	        if( k == '#'){
-	            j--;
-	            fgets(lixo,ABSURDOMEUDEUS,pgm);
-	            continue;	
-            }
-            fseek(pgm,-1,SEEK_CUR);
-		    fscanf(pgm, "%hhu ", &temp);
-			M[i][j] = temp;	
-		}
+    char pgmSaida[30];
+	char pgmNome[30];
+	int scale, element,limite;
+	char op;
+	
+	//Entra com os valores necessarios.
+	printf("Digite o nome do arquivo.\n");
+    scanf("%s", pgmNome);
+    strcat(pgmNome,".pgm");
+    printf("Digite o nome do arquivo de saída.\n");
+    scanf("%s", pgmSaida);
+    strcat(pgmSaida,".pgm");
+	printf("Voce quer Suavizar(S) ou convoluir(C).\n");
+    setbuf(stdin,NULL);
+    scanf("%c", &op);
+    setbuf(stdin,NULL);
+
+
+	if(op == 'S'){
+    printf("Digite o tamanho da janela.\n");
+		scanf("%d",&janela);
+	}else if(op == 'C'){
+		janela = 3;		
+	}
+    
+   //Verifica por casos impossiveis.
+    if(janela <= 1 || janela%2 == 0){
+        printf("A janela dever um número ímpar maior que 1.\n");
+        setbuf(stdin,NULL);
+
+        return main();
+
 	}
 
-	return M;
-}
+	//Tenta fazer a conexao com o arquivo.	
+	pgm = fopen(pgmNome, "r");
+	if(pgm == NULL){
+		cout << "Arquivo invalido.\nDigite somente o nome do arquivo sem a extensao.\n";
+		setbuf(stdin,NULL);
 
-
-void criarArquivoBorda(unsigned char **M, int x, int y, int scale,char *nome){
-
-	int i,j;
-	
-
-	newPgm = fopen(nome, "w");
-
-	if(newPgm == NULL){
-		cout << "impossivel criar arquivo\n";
 		exit(1);
 	}
 
-	fprintf(newPgm,"P2\n");
-	fprintf(newPgm,"%d %d\n", y, x);
-	fprintf(newPgm,"%d\n", scale);
+	//le o cabecalho do arquivo
+	lerCabecalho(&x,&y,&scale);
+	
+    int temp = (janela/2)*2;
 
-	int count = 1;
-	for(i = janela/2; i < x+janela/2 ; i++){
-		count = 1;
-		for(j = janela/2; j < y+janela/2 ; j++,count++){
-			
-			fprintf(newPgm,"%.3d ", M[i][j]);
-			if(count%10==0 && j > janela/2)
-				fprintf(newPgm, " #Linha %d.\n", i - janela/2 +1);
-		}
-		fprintf(newPgm,"\n");
-	}
-	fclose(newPgm);
-	cout << "Arquivo criado com sucesso.\n";
-}
+    //Aloca matriz do tamanho passado.
+	M = criarMatriz(x+temp, y+temp);
+	//Le imagem e atribui a matriz alocada.
+	lerImagem(M,x+1,y+1);
+	//Aplica o filtro de media e atribui a matriz ou chama a funcao que faz o laplace.
+   	if( op == 'S'){
+   		M = filtro(M,x,y,janela);
+   	}else if(op == 'C'){
+   		bordear(M,x,y);
+   		M = cat_shadow(M,x+1,y+1);
+   	}
+    //M = bordear();
+    //Escreve o arquivo de saida a partir da matriz suavizada.
+	criarArquivoBorda(M,x,y, scale,pgmSaida);
 
-unsigned char** filtro(unsigned char **original, int x, int y, int jan){
+	//fecha o streaming e desaloca matriz;
+	fclose(pgm);
+    free(M,x);
 
-    int aux = jan/2;
-            
-    unsigned char** M = criarMatriz(x + 2*aux, y + 2*aux);
-	for(int i = 0; i < x + 2*aux; i++){
-    	for(int j = 0; j < y + 2*aux; j++){
-    		M[i][j] = 0;
-    	}
-    }
-    for(int i = aux; i < x + 1; i++){
-    	for(int j = aux; j < y + 1; j++){
-    		M[i][j] = original[i][j];
-    	}
-    }
-
-	int soma = 0;
-	for(int linha = aux; linha < x + 1; linha++){
-		for(int coluna = aux; coluna < y + 1; coluna++){
-			for(int i = linha - aux; i < linha + aux + 1; i++){
-				for(int j = coluna - aux; j < coluna + aux + 1; j++){
-					soma += M[i][j];
-
-				}
-			}
-			M[linha][coluna] = soma / (jan*jan);
-			soma = 0;
-		}
-	}
-	return M;
-}
-
-int Bordar(int i, int j, short int laplace[][3], unsigned char **pgm){
-    int p, q, temp;
-    int element = 0;
-    i = i - 1;
-    j = j - 1;
-    temp = j;
-    while(p < 3){
-        while(q < 3){
-            element += pgm[i][j] * laplace[p][q];
-            j++;
-        }
-	p++;
-        j = temp;
-        i++;
-    }
-    return element;
-}
-
-void free(unsigned char **M, int x){
-	int i;
-	for (i = 0; i < x; ++i){
-		free(M[i]);
-	}
-
-	free(M);
-}
-void lerCabecalho(int *x,int *y,int *scale){
-
-	char lixo[1000];
-	unsigned char c;
-	fgets(lixo,ABSURDOMEUDEUS,pgm);
-	*y = -1;
-	*x = -1;
-	*scale = -1;
-	while(*scale <= 0 ){
-	    
-	    char k;
-		k = fgetc(pgm);
-        
-        if( k == '#'){
-			fgets(lixo,ABSURDOMEUDEUS,pgm);
-            continue;	
-        }     
-        
-        fseek(pgm,-1,SEEK_CUR);
-		
-        fscanf(pgm, "%c",&c);
-        
-		
-			if(*y == -1){
-				fseek(pgm,-1,SEEK_CUR);
-				fscanf(pgm, "%d", &(*y));
-
-			}else if(*x == -1){
-				fseek(pgm,-1,SEEK_CUR);
-				fscanf(pgm, "%d", &(*x));	
-
-			}else if(*scale == -1){	
-				fseek(pgm,-1,SEEK_CUR);
-				fscanf(pgm, "%d", &(*scale));
-			
-		}	
-	}
+	return 0;
 }
